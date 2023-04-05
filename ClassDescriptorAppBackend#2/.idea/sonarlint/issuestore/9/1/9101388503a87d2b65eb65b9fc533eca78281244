@@ -1,0 +1,20 @@
+
+v
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÀŠı”8Ôşú‘õ0
+z
+java:S1192"XDefine a constant instead of duplicating this literal "%-25s %-25s %-25s %-25s" 3 times.(Ë¨ıÒøÿÿÿÿ8Öşú‘õ0
+g
+java:S1301^"KReplace this "switch" statement by "if" statements to increase readability.(ìúÇV8Ùşú‘õ0
+>
+java:S16433"Use a StringBuilder instead.(éÊå†ÿÿÿÿÿ8Úşú‘õ0
+9
+java:S1643s"Use a StringBuilder instead.(î’úŞ8Úşú‘õ0
+?
+java:S1643Œ"Use a StringBuilder instead.(Áññ©øÿÿÿÿ8Úşú‘õ0
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ï¹ÈÔûÿÿÿÿ8Şşú‘õ0
+n
+java:S2095("LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(¯ªüÍûÿÿÿÿ8ôû‘õ0
+i	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿÏÉe8ûû‘õ0
+n
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 32 to the 15 allowed.(ÿÏÉe8şû‘õ0
+=	java:S131^""Add a default case to this switch.(ìúÇV8û‘û‘õ0
