@@ -1,46 +1,46 @@
 # ClassDescriptorApp
 
-## Description
+## Descripción ✍️ 
 
-It is a project, which consists of describing a class.
+Es un proyecto, que consiste en describir una clase.
 
-## Table of Contents (Optional)
+## Tabla de contenido  👈 
 
-- [Installation](#installation)
-- [Versions](#versions)
-
-
-## Installation
-
--Module ClassDescriptorAppFrontEnd#1
-
-This module is a react application that has as an express backend.js, its objective is to add and delete notes.
-
-1 - execute this command in root path (./frontend) npm install == > with this cmd we will generate all necesary dependencies for run our project.
-
-2 - change to route (/frontend/src) for execute the command node server.js and start the server or in a IDE open RUN CONFIGURATION, select a Node.js run and set the path (./frontend/src/server.js) for lift server.
+-[Instalación](#installation)
+-[Versiones](#versiones)
 
 
--Module ClassDescriptorAppBackend#2
+## Instalación  🔧 
 
-This module is a console application, which consists of receiving a text file which contains a java class as content, the mission of this module is to describe the content of that class.
+-Modulo ClassDescriptorAppFrontEnd#1
 
-1 - open this project from a IDE like IntelliJ IDEA, open the terminal and run mvn clean install for install all depedencies in your local project.
+Este módulo es una aplicación react que tiene como backend expreso.js, su objetivo es añadir y eliminar notas.
+
+1 - Ejecutar este comando en ruta raíz (./frontend) npm install == > con este cmd generaremos todas las dependencias necesarias para ejecutar nuestro proyecto.
+
+2 - cambie a route (/frontend/src) para ejecutar el servidor de nodo de comandos.js e inicie el servidor o en un IDE abra EJECUTAR CONFIGURACIÓN, seleccione un Nodo.js ejecute y establezca la ruta (./frontend/src/server.js) para el servidor de elevación.
 
 
--Module FullStackClassDescriptorApp#3
+-Modulo ClassDescriptorAppBackend#2
 
-This module consists of a react client and a web service with spring boot, it is intended to describe a java class.
+Este módulo es una aplicación de consola, que consiste en recibir un archivo de texto que contiene una clase java como contenido, la misión de este módulo es describir el contenido de esa clase.
 
-1 - Open project in your Editor or IDE favorite.
+1 - abra este proyecto desde un IDE como IntelliJ IDEA, abra el terminal y ejecute mvn clean install para instalar todas las depedencias en su proyecto local.
 
-2 - Cd to backend module and execute mvn clean install for install all dependencies in you local project.
 
-3 - Cd to frontend and run npm install, for install all depencies
+-Módulo FullStackClassDescriptorApp#3
 
-4 - First run backend from run configuration and after run frontend with npm start
+Este módulo consta de un cliente react y un servicio web con arranque de primavera, está destinado a describir una clase java.
 
-## Versions
+1 - Abra el proyecto en su Editor o IDE favorito.
+
+2 - Cd al módulo backend y ejecute la instalación limpia de mvn para instalar todas las dependencias en su proyecto local.
+
+3 - Cd a frontend y ejecutar npm install, para instalar todas las depencies
+
+4 - Primer backend de ejecución desde la configuración de ejecución y después de ejecutar frontend con npm start
+
+## Versiones ✅ 
 
 1 - Node 16.13.0
 2 - React 17.0.0
