@@ -30,13 +30,13 @@ Este módulo es una aplicación de consola, que consiste en recibir un archivo d
 
 -Módulo FullStackClassDescriptorApp#3
 
-Este módulo consta de un cliente react y un servicio web con arranque de primavera, está destinado a describir una clase java.
+Este módulo consta de un cliente react y un servicio web Spring Boot, está destinado a describir una clase java.
 
 1 - Abra el proyecto en su Editor o IDE favorito.
 
-2 - Cd al módulo backend y ejecute la instalación limpia de mvn para instalar todas las dependencias en su proyecto local.
+2 - Cd al módulo backend y ejecute el comando mvn clean install para instalar todas las dependencias en su proyecto local.
 
-3 - Cd a frontend y ejecutar npm install, para instalar todas las depencies
+3 - Cd a frontend y ejecutar npm install, para instalar todas las dependencias.
 
 4 - Primer backend de ejecución desde la configuración de ejecución y después de ejecutar frontend con npm start
 
