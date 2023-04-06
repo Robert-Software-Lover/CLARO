@@ -1,0 +1,5 @@
+
+[	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(¤Ë¶ù
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤Ë¶ù
+‚
+java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(¤Ë¶ù

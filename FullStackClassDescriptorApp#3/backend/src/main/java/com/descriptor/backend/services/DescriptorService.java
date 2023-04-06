@@ -13,10 +13,13 @@ public class DescriptorService {
 
     public static String GetDescriptionFromClass(String definition){
 
+        //Validate input first
+        if(definition==null || definition.isEmpty()) return "Contenido vacio.";
+
         //Replace bad chars
         definition = definition.replaceAll("\\s", " ");
 
-        //Variables definition
+        //Variables definitions
         String result="";
 
         String headers = String.format("%-25s %-25s %-25s %-25s", "NAME", "VARI", "SCOPE", "SIGNATURE");
@@ -48,8 +51,8 @@ public class DescriptorService {
 
             }
 
+            //Regex for contents body
             for(int i =0; i < listRegex.size(); i++){
-
 
                 Pattern patternGeneric = Pattern.compile(listRegex.get(i));
 
@@ -67,11 +70,12 @@ public class DescriptorService {
 
                 //Iterate over each method and attribute
 
-                for(String method : genericDescription) {
+                for(String generic : genericDescription) {
 
-                    if(method != null){
+                    //Only if generic is diferent of null
+                    if(generic != null){
 
-                        String[] methodSplited = method.split(" ");
+                        String[] methodSplited = generic.split(" ");
 
                         String name = "";
                         String vari = "";
@@ -81,13 +85,15 @@ public class DescriptorService {
 
                         switch (i) {
 
+                            //First iterations
                             case 0:
-                                String tempAtrb = method.substring(method.indexOf("{") + 1);
+                                String tempAtrb = generic.substring(generic.indexOf("{") + 1);
 
                                 String[] attributes = tempAtrb.split(";");
 
                                 for (String atr : attributes) {
 
+                                    //Replace all invalid characters, from request..
                                     atr = atr.replaceAll(".*(  )", "");
 
                                     atr = atr.trim();
@@ -102,11 +108,14 @@ public class DescriptorService {
 
                                     rType = tempValue[1];
 
+                                    //Format the body, with some spaces
                                     body += String.format("%-25s %-25s %-25s %-25s", name, vari, scope, " TYPE: " + rType + "\n");
                                 }
                                 break;
 
+                                //Second Iterations
                             case 1:
+                                //Set value from generic content, for be used in bodyString
                                 name = methodSplited[2].replace(methodSplited[2].substring(methodSplited[2].indexOf("(")), "");
 
                                 vari = "M";
@@ -117,6 +126,7 @@ public class DescriptorService {
 
                                 params = methodSplited[2].substring(methodSplited[2].indexOf("("));
 
+                                //Format the params
                                 if (!params.equals("()")) {
 
                                     params = params.replace("(", "");
@@ -126,6 +136,7 @@ public class DescriptorService {
                                     params = "";
                                 }
 
+                                //Format like a table
                                 body += String.format("%-25s %-25s %-25s %-25s", name, vari, scope, " RTYPE: " + rType + ", PARAMS: " + params + "\n");
 
                                 break;
@@ -133,12 +144,11 @@ public class DescriptorService {
                 }
                 }
 
-
+                //Set it to 0, for use again.
                 countBody=0;
             }
 
             //Join Headers + Body
-
             result = "Class Name: " + classDescription[2] + "\n" + "Scope: " + classDescription[0] + "\n" +
                     "Contructor: " + classDescription[2] + "\n" + headers + "\n" + body;
 

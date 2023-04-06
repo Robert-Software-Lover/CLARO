@@ -1,41 +1,41 @@
 import Service.DescriptorService;
-
 import java.util.Scanner;
 
 public class MainDescriptorApp {
 
-
     public static void main(String []args) {
 
-	    int attemps = 1;
+        int attempts = 1; // Initialize the attempts counter to 1
 
-        while (attemps <= 3){
+        while (attempts <= 3){ // Loop until attempts exceeds 3
 
-            System.out.print("Ruta de archivo: ");
+            System.out.print("Ruta de archivo: "); // Print a prompt for the user to enter a file path
 
-            Scanner console = new Scanner(System.in);
+            Scanner console = new Scanner(System.in); // Create a new Scanner instance to read user input
 
-            String path = console.nextLine();
+            String path = console.nextLine(); // Read the user's input as a string
 
-            DescriptorService descriptorService = new DescriptorService();
+            DescriptorService descriptorService = new DescriptorService(); // Create a new instance of the DescriptorService class
 
-            System.out.println(descriptorService.GetDescriptionFromClass(path));
+            System.out.println(descriptorService.GetDescriptionFromClass(path)); // Call the GetDescriptionFromClass method on the DescriptorService instance and print the result
 
-            System.out.println("");
+            System.out.println(""); // Print an empty line for formatting purposes
 
-            if(descriptorService.GetDescriptionFromClass(path).contains("not found")){
+            if(descriptorService.GetDescriptionFromClass(path).contains("not found")){ // Check if the result of GetDescriptionFromClass contains the string "not found"
 
-                if(attemps==3) {
+                if(attempts==3) { // If this is the third attempt,
 
-                    System.out.println("Has llegado al limite de intentos.");
+                    System.out.println("Has alcanzado el # maximo de intentos."); // inform the user that they have exceeded the maximum number of attempts.
 
                 }
 
-                attemps++;
+                attempts++; // Increment the attempts counter
 
             }
-            else{
+            else{ // If the result of GetDescriptionFromClass does not contain "not found", exit the loop.
+
                 break;
+
             }
 
 

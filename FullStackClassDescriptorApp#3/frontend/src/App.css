@@ -47,7 +47,24 @@
 }
 .center-div-container {
   position: absolute;
-  top: 110%;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: lightgray;
+  /* Add any other styles you want for the centered div */
+}
+
+.center-div-container-result {
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: lightgray;
+  /* Add any other styles you want for the centered div */
+}
+.center-div-container-form {
+  position: absolute;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: lightgray;

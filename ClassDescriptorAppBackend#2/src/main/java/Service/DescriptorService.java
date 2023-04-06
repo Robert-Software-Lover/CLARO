@@ -35,17 +35,22 @@ public class DescriptorService {
 
         try{
 
+            //Check if file exist
             if(new File(pathFile).exists()){
 
+                //Open file
                 BufferedReader br = new BufferedReader(new FileReader(pathFile));
 
                 String line = br.readLine();
 
+                //Iterate over each line
                 while (line != null)
                 {
                     lines.add(line);
                     line = br.readLine();
                 }
+
+                //Fill content variable
                 for(String ln : lines){
 
                     content+=ln;
@@ -56,21 +61,24 @@ public class DescriptorService {
 
                 Matcher matcherClass = patternClass.matcher(content);
 
+                //if class regex match
                 if(matcherClass.find()){
 
                     classDescription = matcherClass.group().split(" ");
 
                 }
 
+                //Iterate over each regex inside of listRegex
                 for(int i =0; i < listRegex.size(); i++){
 
-
+                    //Generic pattern, for reduce lines of code
                     Pattern patternGeneric = Pattern.compile(listRegex.get(i));
 
                     Matcher matcherGeneric = patternGeneric.matcher(content);
 
                     genericDescription = new String[matcherGeneric.groupCount()];
 
+                    //Fill array with values group
                     while (matcherGeneric.find()){
 
                         genericDescription[countBody] = matcherGeneric.group();
@@ -80,75 +88,86 @@ public class DescriptorService {
                     }
 
                     //Iterate over each method and attribute
+                    for(String generic : genericDescription) {
 
-                    for(String method : genericDescription){
+                        if(generic != null){
 
-                        String [] methodSplited = method.split(" ");
+                            //Split each result
+                            String[] methodSplited = generic.split(" ");
 
-                        String name = "";
-                        String vari = "";
-                        String scope = "";
-                        String rType = "";
-                        String params = "";
+                            String name = "";
+                            String vari = "";
+                            String scope = "";
+                            String rType = "";
+                            String params = "";
 
-                        switch (i){
+                            //First iteration
+                            switch (i) {
 
-                            case 0:
-                                String tempAtrb = method.substring(method.indexOf("{") + 1);
+                                case 0:
 
-                                String[] attributes = tempAtrb.split(";");
+                                    //Sub string, for work overs attribues
+                                    String tempAtrb = generic.substring(generic.indexOf("{") + 1);
 
-                                for(String atr : attributes){
+                                    //Split by ; for get all attributes
+                                    String[] attributes = tempAtrb.split(";");
 
-                                    atr = atr.trim();
+                                    for (String atr : attributes) {
 
-                                    String[] tempValue = atr.split(" ");
+                                        //Remove spaces
+                                        atr = atr.trim();
 
-                                    name = tempValue[2];
+                                        String[] tempValue = atr.split(" ");
 
-                                    vari = "A";
+                                        name = tempValue[2];
 
-                                    scope = tempValue[0];
+                                        vari = "A";
 
-                                    rType = tempValue[1];
+                                        scope = tempValue[0];
 
-                                    body+=String.format("%-25s %-25s %-25s %-25s", name, vari, scope, " TYPE: " + rType + "\n");
-                                }
-                                break;
+                                        rType = tempValue[1];
 
-                            case 1:
-                                name = methodSplited[2].replace(methodSplited[2].substring(methodSplited[2].indexOf("(")), "");
+                                        //Set body, like a table
+                                        body += String.format("%-25s %-25s %-25s %-25s", name, vari, scope, " TYPE: " + rType + "\n");
+                                    }
+                                    break;
 
-                                vari = "M";
+                                    //case 1 -- > Second iterations
+                                case 1:
+                                    name = methodSplited[2].replace(methodSplited[2].substring(methodSplited[2].indexOf("(")), "");
 
-                                scope = methodSplited[0];
+                                    vari = "M";
 
-                                rType = methodSplited[1];
+                                    scope = methodSplited[0];
 
-                                params = methodSplited[2].substring(methodSplited[2].indexOf("("));
+                                    rType = methodSplited[1];
 
-                                if(!params.equals("()")){
+                                    params = methodSplited[2].substring(methodSplited[2].indexOf("("));
 
-                                    params = params.replace("(","");
+                                    //Format params
+                                    if (!params.equals("()")) {
 
-                                    params+= " " + methodSplited[3].replace(")", "");
-                                }
-                                else{
-                                    params="";
-                                }
+                                        params = params.replace("(", "");
 
-                                body+=String.format("%-25s %-25s %-25s %-25s", name, vari, scope, " RTYPE: " + rType + ", PARAMS: " + params + "\n");
+                                        params += " " + methodSplited[3].replace(")", "");
+                                    } else {
+                                        params = "";
+                                    }
 
-                                break;
-                        }
+                                    //Make a beatiful body with String.format
+                                    body += String.format("%-25s %-25s %-25s %-25s", name, vari, scope, " RTYPE: " + rType + ", PARAMS: " + params + "\n");
+
+                                    break;
+                            }
 
                     }
+                    }
 
+                    // = 0, for use it, again.
                     countBody=0;
                 }
 
                 //Join Headers + Body
-
                 result = "Class Name: " + classDescription[2] + "\n" + "Scope: " + classDescription[0] + "\n" +
                         "Contructor: " + classDescription[2] + "\n" + headers + "\n" + body;
 
