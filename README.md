@@ -18,7 +18,7 @@ Este módulo es una aplicación react que tiene como backend expreso.js, su obje
 
 1 - Ejecutar este comando en ruta raíz (./frontend) npm install == > con este cmd generaremos todas las dependencias necesarias para ejecutar nuestro proyecto.
 
-2 - cambie a route (/frontend/src) para ejecutar el servidor de nodo de comandos.js e inicie el servidor o en un IDE abra EJECUTAR CONFIGURACIÓN, seleccione un Nodo.js ejecute y establezca la ruta (./frontend/src/server.js) para el servidor de elevación.
+2 - cambie a route (/frontend/src) para ejecutar el servidor de node e inicie el servidor o en un IDE abra RUN CONFIGURACIÓN, seleccione un Nodo.js RUN y establezca la ruta (./frontend/src/server.js) para leventar el servidor.
 
 
 -Modulo ClassDescriptorAppBackend#2
@@ -38,7 +38,7 @@ Este módulo consta de un cliente react y un servicio web Spring Boot, está des
 
 3 - Cd a frontend y ejecutar npm install, para instalar todas las dependencias.
 
-4 - Primer backend de ejecución desde la configuración de ejecución y después de ejecutar frontend con npm start
+4 - Primero ejecute backend desde la configuración de ejecución y después de ejecutar frontend con npm start
 
 ## Versiones ✅ 
 
