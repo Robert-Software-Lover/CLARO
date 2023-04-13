@@ -1,6 +1,7 @@
 package com.descriptor.backend.controllers;
 
 import com.descriptor.backend.services.DescriptorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -8,10 +9,18 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/descriptor")
 public class ClassDescriptorController {
 
+    private DescriptorService generalDescriptorService;
+
+    public ClassDescriptorController(DescriptorService descriptorService){
+
+        this.generalDescriptorService = descriptorService;
+
+    }
+
     @PostMapping("/info")
     public String SaveFile(@RequestBody String definition) throws Exception{
 
-        return DescriptorService.GetDescriptionFromClass(definition);
+        return generalDescriptorService.GetDescriptionFromClass(definition);
     }
 
 }

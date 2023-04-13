@@ -1,8 +1,8 @@
-package Service;
+package com.descriptor.backend.services.impl;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import com.descriptor.backend.services.DescriptorService;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,23 +10,22 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class DescriptorService {
+@Service
+public class DescriptorServiceImpl  implements DescriptorService {
 
-    public String GetDescriptionFromClass(String pathFile) {
+    public  String GetDescriptionFromClass(String definition){
+
+
         try {
-            // Check if file exists
-            if (!new File(pathFile).exists()) {
-                return "File not found.";
-            }
+            //Validate input first
+            if(definition==null || definition.isEmpty()) return "Contenido vacio.";
 
-            // Read file and concatenate all lines into a single string
-            BufferedReader reader = new BufferedReader(new FileReader(pathFile));
-            String content = reader.lines().collect(Collectors.joining("\n"));
-            reader.close();
+            //Replace bad chars
+            definition = definition.replaceAll("\\s", " ");
 
             // Extract class name and scope using regex
             Pattern classPattern = Pattern.compile("(public|private|protected) class ([A-Z]\\w+)");
-            Matcher classMatcher = classPattern.matcher(content);
+            Matcher classMatcher = classPattern.matcher(definition);
             if (!classMatcher.find()) {
                 return "Class not found.";
             }
@@ -42,8 +41,9 @@ public class DescriptorService {
                     Pattern.compile("(public|private|protected) (void|String|int|Boolean) \\w+([(][^)]*[)])")
             );
 
+            String finalDefinition = definition;
             patterns.forEach(pattern -> {
-                Matcher matcher = pattern.matcher(content);
+                Matcher matcher = pattern.matcher(finalDefinition);
                 while (matcher.find()) {
                     String declaration = matcher.group();
                     if (pattern.pattern().contains("= ")) {
@@ -98,7 +98,9 @@ public class DescriptorService {
 
         } catch (Exception e) {
             e.printStackTrace();
+
             return "";
         }
+
     }
 }
